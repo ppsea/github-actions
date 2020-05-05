@@ -4,21 +4,20 @@
 name: Node.js CI
 
 on:
-#  
-#  push:
-#    branches: [ master ]
+# for Test 
+ push:
+   branches: [ master ]
 #  pull_request:
 #    branches: [ master ]
   schedule:
-    - cron: "10 05 * * 6" ## 6:SAT, UCT 05:10 = KST 14:10 
+    - cron: "10 23 * * 1-5"
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -26,6 +25,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    - run: |
+        npm ci
+        npm run build
+        npm start
+      env:
+        SLACK_API_KEY: ${{ secrets.SLACK_API_KEY}}
+        WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY}}
+    

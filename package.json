@@ -1,0 +1,29 @@
+{
+  "name": "github-actions",
+  "version": "1.0.0",
+  "description": "github action의 cron스케쥴 기능을 이용해서 일정 주기로 여러기능을 배포합니다.",
+  "main": "index.ts",
+  "repository": "https://github.com/HenrySungnamKim/github-actions.git",
+  "author": "henry <ksn569@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "ts-node src/index.ts",
+    "build": "tsc",
+    "start": "node dist/src/index.js"
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "@slack/webhook": "^5.0.3",
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "date-fns": "^2.12.0",
+    "query-string": "^6.12.1",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.8.3"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.18",
+    "@types/node": "^13.13.4",
+    "tslint-config-prettier": "^1.18.0"
+  }
+}
