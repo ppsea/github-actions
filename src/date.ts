@@ -1,7 +1,7 @@
 import * as dateFns from "date-fns";
 export const parser = () => {
   const todayUTC = Date.parse(new Date().toString()); //UTC기준
-  const todayKST = new Date(todayUTC - 540 * 60 * 1000); //KST로 수정(-9시간)
+  const todayKST = new Date(todayUTC - 9 * 60 * 1000); //KST로 수정(-9시간)
 
   const yoIl = dateFns.format(todayKST, "e");
   const today = dateFns.format(todayKST, "M월 d일");
