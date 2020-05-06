@@ -6,8 +6,8 @@ name: Node.js CI
 on:
   #test
   # push:
-    # branches:
-      - master
+  # branches:
+  # - master
   schedule:
     - cron: "10 0 * * 1-5"
 jobs:
