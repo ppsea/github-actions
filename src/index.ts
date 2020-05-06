@@ -4,12 +4,14 @@ import dateData from "./data/date.json";
 import parser from "./parser";
 import slack from "./slack";
 
-const today = new Date();
+const todayUTC = Date.parse(new Date().toString()); //UTC기준
+const todayKST = new Date(todayUTC - 540 * 60 * 1000); //KST로 수정(-9시간)
 //토, 일 확인
 const yoIlOk =
-  dateFns.format(today, "e") !== "7" || dateFns.format(today, "e") !== "1";
+  dateFns.format(todayKST, "e") !== "7" ||
+  dateFns.format(todayKST, "e") !== "1";
 //공휴일 확인
-const specialDayFormat = dateFns.format(today, "M-d");
+const specialDayFormat = dateFns.format(todayKST, "M-d");
 const specialDayOk =
   (<any>dateData)[specialDayFormat] === undefined ? true : false;
 
