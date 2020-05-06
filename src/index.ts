@@ -4,8 +4,8 @@ import dateData from "./data/date.json";
 import parser from "./parser";
 import slack from "./slack";
 
-const todayUTC = Date.parse(new Date().toString()); //UTC기준
-const todayKST = new Date(todayUTC - 9 * 60 * 1000); //KST로 수정(-9시간)
+const todayUTC = new Date().getTime(); //UTC기준
+const todayKST = new Date(todayUTC + 540 * 60 * 1000); //KST로 수정(9시간 차이)
 //토, 일 확인
 const yoIlOk =
   dateFns.format(todayKST, "e") !== "7" ||
